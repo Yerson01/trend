@@ -1,0 +1,92 @@
+/*global classes*/
+.container {
+    max-width: 80rem;
+    width: 90%;
+    margin: auto;
+}
+
+.min-container {
+    max-width: 60rem;
+    width: 90%;
+    margin: auto;
+}
+
+@media (min-width: 768px) {
+    .container, .min-container {
+        width: 95%;
+    }
+}
+
+.btn {
+    display: inline-block;
+    padding: .5rem 1rem;
+    font-family: var(--poppins);
+    font-size: .8em;
+    text-align: center;
+    text-decoration: none;
+    transition: .3s;
+    outline: none;
+}
+
+@media (min-width: 768px) {
+    .btn {
+        padding: .9rem 2rem;
+        font-size: 1em;;
+    }
+}
+
+.bg-primary {
+    background: var(--primary);
+}
+
+.bg-secondary {
+    background: var(--secondary);
+}
+
+.bg-third {
+    background: var(--third);
+}
+
+.bg-green {
+    background: var(--green);
+}
+
+.bg-transparent {
+    background: transparent;
+}
+
+.red {
+    color: var(--primary);
+}
+
+.white {
+    color: var(--secondary);
+}
+
+.blue {
+    color: var(--third);
+}
+
+.green {
+    color: var(--green);
+}
+
+.border-radius {
+    border-radius: 50px;
+}
+
+.border-primary {
+    border: 2px solid var(--primary);;
+}
+
+.border-secondary {
+    border: 2px solid var(--secondary);
+}
+
+.border-third {
+    border: 2px solid var(--third);
+}
+
+.border-green {
+    border: 2px solid var(--green);
+}
