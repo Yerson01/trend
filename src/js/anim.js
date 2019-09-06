@@ -1,4 +1,4 @@
-/*down arrow hidden on scroll*/
+/*down-arrow hidden on scroll*/
 const downArrow = document.querySelector('.down-arrow');
 const header = document.querySelector('header');
 
@@ -32,6 +32,13 @@ window.addEventListener('scroll', () => {
         });
     }
 });
+
+
+/*delete elements at x seconds*/
+let alert = document.querySelector('.alert');
+setTimeout(() => {
+    alert.style.display = 'none';
+}, 4000);
 
 
 

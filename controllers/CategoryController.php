@@ -1,7 +1,60 @@
 <?php
+require_once './models/Category.php';
 
 class CategoryController {
     public function index() {
-        echo 'Index desde categoryController';
+
+    }
+
+    public function showAll() {
+        $category = new Category();
+        $categories = $category->getAll();
+        return $categories;
+    }
+
+    public function create() {
+        if (isset($_POST['submit'])) {
+            $categoryName = !empty($_POST['name']) ? $_POST['name'] : false;
+            $image = isset($_FILES['image']) ? $_FILES['image'] : false;
+            if ($categoryName && $image) {
+                $imgName = $image['name'];
+                $imgType =  $image['type'];
+                $imgLocation = $image['tmp_name'];
+
+                //verificar que la imagen sea valida
+                if ($imgType == 'image/svg+xml' || $imgType == 'image/jpg' || $imgType == 'image/jpeg' || $imgType == 'image/png') {
+
+                    //crear nueva instancia de categoria
+                    $category = new Category();
+                    $category->setName($categoryName);
+                    $category->setImage($imgName);
+                    $inserted = $category->insertDB();
+                    if ($inserted) {
+                        //Guardar la imagen en un directorio
+                        Utils::saveImg($imgName, $imgLocation);
+
+                        //Mostrar mensaje de success y redirigir
+                        $_SESSION['success'] = 'La categoria se ha introducido con exito!';
+                        Utils::redirectTo('user/manage');
+
+                    //Si hubo error al insertar
+                    } else {
+                        $_SESSION['error'] = 'Ocurrio un error inesperado';
+                        Utils::redirectTo('user/manage');
+                    }
+                //si la imagen no tiene un formato correcto
+                } else {
+                    $_SESSION['error'] = 'Introduce una imagen válida!';
+                    Utils::redirectTo('user/manage');
+                }
+            //si los campo estan vacios redirigir
+            } else {
+                $_SESSION['error'] = 'Ambos campos son obligatorios!';
+                Utils::redirectTo('user/manage');
+            }
+        //si no existe post redirigir
+        } else {
+            Utils::redirectTo();
+        }
     }
 }
