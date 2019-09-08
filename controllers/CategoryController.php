@@ -6,15 +6,9 @@ class CategoryController {
 
     }
 
-    public function showAll() {
-        $category = new Category();
-        $categories = $category->getAll();
-        return $categories;
-    }
-
     public function create() {
         if (isset($_POST['submit'])) {
-            $categoryName = !empty($_POST['name']) ? $_POST['name'] : false;
+            $categoryName = !empty($_POST['name']) ? Utils::sanitizeField($_POST['name']) : false;
             $image = isset($_FILES['image']) ? $_FILES['image'] : false;
             if ($categoryName && $image) {
                 $imgName = $image['name'];
@@ -31,25 +25,25 @@ class CategoryController {
                     $inserted = $category->insertDB();
                     if ($inserted) {
                         //Guardar la imagen en un directorio
-                        Utils::saveImg($imgName, $imgLocation);
+                        Utils::saveImg($imgName, $imgLocation, 'categories');
 
                         //Mostrar mensaje de success y redirigir
-                        $_SESSION['success'] = 'La categoria se ha introducido con exito!';
+                        $_SESSION['success'] = 'Category has been successfully introduced!';
                         Utils::redirectTo('user/manage');
 
                     //Si hubo error al insertar
                     } else {
-                        $_SESSION['error'] = 'Ocurrio un error inesperado';
+                        $_SESSION['error'] = 'An unexpected error occurred';
                         Utils::redirectTo('user/manage');
                     }
                 //si la imagen no tiene un formato correcto
                 } else {
-                    $_SESSION['error'] = 'Introduce una imagen válida!';
+                    $_SESSION['error'] = 'Enter a valid image!';
                     Utils::redirectTo('user/manage');
                 }
             //si los campo estan vacios redirigir
             } else {
-                $_SESSION['error'] = 'Ambos campos son obligatorios!';
+                $_SESSION['error'] = 'Both fields are required!';
                 Utils::redirectTo('user/manage');
             }
         //si no existe post redirigir

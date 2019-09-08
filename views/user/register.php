@@ -6,11 +6,11 @@
                 <div class="logo-container">
                     <h3 class="logo">trend</h3>
                 </div>
-                <p>Accede para ver mas contenido</p>
+                <p>Sign up to see more content</p>
                 <div class="have-account">
-                    <p><span>Ya tienes una cuenta?</span>
-                        <a href="<?=BASE_URL?>/user/login">Inicia Sesión</a>
-                        | <a href="<?=BASE_URL?>">Omitir por ahora</a>
+                    <p><span>Do you already have an account?</span>
+                        <a href="<?=BASE_URL?>/user/login">Sign In</a>
+                        | <a href="<?=BASE_URL?>">Skip for now</a>
                     </p>
                 </div>
             </div>
@@ -19,7 +19,7 @@
         <form action="<?=BASE_URL?>/user/create" method="POST" id="register-form">
             <div class="fields-container">
                 <div class="fields">
-                    <h4><i class="far fa-user"></i> Regístrate</h4>
+                    <h4><i class="far fa-user"></i> Sign Up</h4>
                     <div class="field name">
                         <i class="far fa-user"></i>
                         <input type="text" name="name" id="" placeholder="Name">

@@ -3,14 +3,16 @@ require_once './models/User.php';
 
 class UserController {
     public function index() {
-        echo 'Index desde UserController';
+
     }
 
     public function login() {
+        Utils::isLogged();
         require_once './views/user/login.php';
     }
 
     public function register() {
+        Utils::isLogged();
         require_once './views/user/register.php';
     }
 
@@ -34,14 +36,14 @@ class UserController {
                $user->setPassword($password);
                $register = $user->insertDB();
                if ($register) {
-                   $_SESSION['success'] = 'Registro Completo!';
+                   $_SESSION['success'] = 'Successfully registered!';
                    Utils::redirectTo('user/login');
                } else {
-                   $_SESSION['error'] = 'Ocurrio un error inesperado';
+                   $_SESSION['error'] = 'An unexpected error occurred';
                    Utils::redirectTo('user/register');
                }
             } else {
-                $_SESSION['error'] = 'Todos los campos son obligatorios!';
+                $_SESSION['error'] = 'All fields are required!';
                 Utils::redirectTo('user/register');
             }
         } else {
@@ -71,7 +73,7 @@ class UserController {
                     Utils::redirectTo('user/login');
                 }
             } else {
-                $_SESSION['error'] = 'Debes completar ambos campos';
+                $_SESSION['error'] = 'You must complete both fields';
                 Utils::redirectTo('user/login');
             }
         } else {

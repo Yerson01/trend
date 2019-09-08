@@ -35,128 +35,29 @@
 
 <main id="main">
     <div class="main-container min-container">
-        <h2>Some Products</h2>
+        <h2>Latest Products</h2>
         <!--            <a href="" class="arrow-right border-radius position-fixed right">-->
         <!--                Ver todos-->
         <!--                <img src="./img/svg/right-arrow.svg" alt="">-->
         <!--            </a>-->
         <div class="products">
-            <div class="product">
-                <div class="product-container">
-                    <h3>Cory T-shirt</h3>
-                    <img src="src/img/r.png" alt="Product">
-                    <div class="product-footer">
-                        <p class="price">$ 9.99</p>
-                        <a href="#" class="add-cart">
-                            <img src="src/img/svg/cart.svg" alt="cart">
-                        </a>
+            <?php
+                $products = Utils::showLimitProducts(6);
+                while($product = $products->fetch_assoc()):
+            ?>
+                <div class="product">
+                    <div class="product-container">
+                        <h3><?=$product['_name']?></h3>
+                        <img src="<?=BASE_URL?>src/img/products/<?=$product['_image']?>" alt="Product" class="product-img">
+                        <div class="product-footer">
+                            <p class="price">$ <?=$product['_price']?></p>
+                            <a href="#" class="add-cart">
+                                <img src="<?=BASE_URL?>src/img/svg/cart-white.svg" alt="cart">
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="product">
-                <div class="product-container">
-                    <h3>Adidas T-shirt</h3>
-                    <img src="src/img/r.png" alt="Product">
-                    <div class="product-footer">
-                        <p class="price">$ 9.99</p>
-                        <a href="#" class="add-cart">
-                            <img src="src/img/svg/cart.svg" alt="cart">
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="product">
-                <div class="product-container">
-                    <h3>Cory T-shirt</h3>
-                    <img src="src/img/r.png" alt="Product">
-                    <div class="product-footer">
-                        <p class="price">$ 9.99</p>
-                        <a href="#" class="add-cart">
-                            <img src="src/img/svg/cart.svg" alt="cart">
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="product">
-                <div class="product-container">
-                    <h3>Cory T-shirt</h3>
-                    <img src="src/img/r.png" alt="Product">
-                    <div class="product-footer">
-                        <p class="price">$ 9.99</p>
-                        <a href="#" class="add-cart">
-                            <img src="src/img/svg/cart.svg" alt="cart">
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="product">
-                <div class="product-container">
-                    <h3>Cory T-shirt</h3>
-                    <img src="src/img/r.png" alt="Product">
-                    <div class="product-footer">
-                        <p class="price">$ 9.99</p>
-                        <a href="#" class="add-cart">
-                            <img src="src/img/svg/cart.svg" alt="cart">
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="product">
-                <div class="product-container">
-                    <h3>Cory T-shirt</h3>
-                    <img src="src/img/r.png" alt="Product">
-                    <div class="product-footer">
-                        <p class="price">$ 9.99</p>
-                        <a href="#" class="add-cart">
-                            <img src="src/img/svg/cart.svg" alt="cart">
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="product">
-                <div class="product-container">
-                    <h3>Cory T-shirt</h3>
-                    <img src="src/img/r.png" alt="Product">
-                    <div class="product-footer">
-                        <p class="price">$ 9.99</p>
-                        <a href="#" class="add-cart">
-                            <img src="src/img/svg/cart.svg" alt="cart">
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="product">
-                <div class="product-container">
-                    <h3>Cory T-shirt</h3>
-                    <img src="src/img/r.png" alt="Product">
-                    <div class="product-footer">
-                        <p class="price">$ 9.99</p>
-                        <a href="#" class="add-cart">
-                            <img src="src/img/svg/cart.svg" alt="cart">
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="product">
-                <div class="product-container">
-                    <h3>Cory T-shirt</h3>
-                    <img src="src/img/r.png" alt="Product">
-                    <div class="product-footer">
-                        <p class="price">$ 9.99</p>
-                        <a href="#" class="add-cart">
-                            <img src="src/img/svg/cart.svg" alt="cart">
-                        </a>
-                    </div>
-                </div>
-            </div>
+            <?php endwhile; ?>
         </div><!--products-->
     </div><!--main-container-->
 </main>
@@ -164,7 +65,7 @@
 <section class="banner">
     <div class="banner-container container">
         <h2>Very confortable everywhere</h2>
-        <p>Enjoy all offers we have for you</p>
+        <p>Buy your clothes from the comfort of your home</p>
         <a href="#">Add To Cart</a>
     </div>
 </section>

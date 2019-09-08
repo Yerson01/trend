@@ -1,4 +1,6 @@
 <?php
+require_once './models/Category.php';
+require_once './models/Product.php';
 
 class Utils {
 
@@ -29,10 +31,42 @@ class Utils {
         }
     }
 
-    public static function saveImg($name, $location) {
-        if (!is_dir('./src/img/categories')) {
-            mkdir('./src/img/categories', 0777);
+    public static function isLogged() {
+        if (isset($_SESSION['user']) || isset($_SESSION['admin'])) {
+            return header('Location:'.BASE_URL);
         }
-        move_uploaded_file($location, "./src/img/categories/$name");
     }
+
+    public static function saveImg($name, $location, $saveAt) {
+        if (!is_dir("./src/img/$saveAt")) {
+            mkdir("./src/img/$saveAt", 0777);
+        }
+        move_uploaded_file($location, "./src/img/$saveAt/$name");
+    }
+
+    public static function showCategories() {
+        $category = new Category();
+        $categories = $category->getAll();
+        return $categories;
+    }
+
+    public static function showProducts() {
+        $product = new Product();
+        $products = $product->getAll();
+        return $products;
+    }
+
+    public static function showProduct($id) {
+        $product = new Product();
+        $product->setId($id);
+        $prod = $product->getOne();
+        return $prod;
+    }
+
+    public static function showLimitProducts($limit) {
+        $product = new Product();
+        $products = $product->getLimit($limit);
+        return $products;
+    }
+
 }

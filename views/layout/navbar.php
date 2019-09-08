@@ -4,7 +4,7 @@
     </div><!--logo-container-->
     <nav>
         <ul class="nav-links">
-            <li><a href="#" class="nav-link">Products</a></li>
+            <li><a href="<?=BASE_URL?>product/index" class="nav-link">Products</a></li>
             <li><a href="#" class="nav-link">About Us</a></li>
             <?php if (isset($_SESSION['user'])):?>
                 <li><a href="#" class="nav-link">Orders</a></li>
@@ -21,7 +21,7 @@
         <div class="toggle-user-logged">
             <div class="cart-container">
                 <a href="#" class="cart">
-                    <img src="<?=BASE_URL?>src/img/svg/cart.svg" alt="Cart">
+                    <img src="<?=BASE_URL?>src/img/svg/cart-outline.svg" alt="Cart">
                     <div class="cart-quantity">
                         <span id="products-number">2</span>
                     </div>

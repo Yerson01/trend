@@ -98,10 +98,10 @@ class User {
             if ($isPasswordSame) {
                 return $dbUser;
             } else {
-                return $message = 'El email y la contraseña no coinciden';
+                return $message = 'Email and password do not match';
             }
         } else {
-            return $message = 'El email no esta registrado';
+            return $message = 'The email is not registered';
         }
     }
 }

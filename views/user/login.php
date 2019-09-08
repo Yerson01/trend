@@ -5,11 +5,11 @@
                 <div class="logo-container">
                     <h3 class="logo">trend</h3>
                 </div>
-                <p>Inicia sesion para ver mas contenido</p>
+                <p>Login to see more content</p>
                 <div class="have-account">
-                    <p><span>Aún no tienes una cuenta?</span>
-                        <a href="<?=BASE_URL?>/user/register">Regístrate</a>
-                        | <a href="<?=BASE_URL?>">Omitir por ahora</a>
+                    <p><span>Do not you have an account yet?</span>
+                        <a href="<?=BASE_URL?>/user/register">Sign Up</a>
+                        | <a href="<?=BASE_URL?>">Skip for now</a>
                     </p>
                 </div>
             </div>
@@ -18,7 +18,7 @@
         <form action="<?=BASE_URL?>/user/authenticate" method="POST" id="login-form">
             <div class="fields-container">
                 <div class="fields">
-                    <h4><i class="far fa-user"></i> Iniciar Sesión</h4>
+                    <h4><i class="far fa-user"></i> Sign In</h4>
                     <div class="field email">
                         <i class="far fa-envelope"></i>
                         <input type="email" name="email" id="" placeholder="Email">
