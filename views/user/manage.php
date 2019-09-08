@@ -64,7 +64,11 @@
                         <?php $urlAction = BASE_URL.'product/create' ?>
                     <?php endif; ?>
 
-                    <form action="<?=BASE_URL?>product/create" method="POST" enctype="multipart/form-data" class="add-item add-product">
+                    <form action="<?=$urlAction?>" method="POST" enctype="multipart/form-data" class="add-item add-product">
+
+                        <?php if (isset($edit) && $editProduct->_id): ?>
+                            <input type="hidden" value="<?=$editProduct->_id?>" name="id">
+                        <?php endif; ?>
                         <input type="text" name="name" id="" placeholder="Product name" value="<?=(isset($edit)) ? $editProduct->_name : ''?>">
 
                         <textarea name="description" id="" placeholder="Description"><?=(isset($edit)) ? $editProduct->_description : ''?></textarea>

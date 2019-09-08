@@ -130,7 +130,30 @@ class Product {
         } else {
             return false;
         }
-
     }
+
+    public function updateOne() {
+        $id = $this->getId();
+        $name = $this->getName();
+        $description = $this->getDescription();
+        $price = $this->getPrice();
+        $stock = $this->getStock();
+        $categoryId = $this->getCategoryId();
+        $offer = $this->getOffer();
+        $image = $this->getImage();
+        $date = date('Y-m-d');
+
+        //prepare statement
+        $stmt = $this->conn->prepare("UPDATE products SET _category_id = ?, _name = ?, _price = ?, _stock = ?, _description = ?, _offer = ?, _date = ?, _image = ? WHERE _id = ?");
+        $stmt->bind_param('isiissssi', $categoryId, $name, $price, $stock, $description, $offer, $date, $image, $id);
+        $stmt->execute();
+
+        if ($stmt->affected_rows !== 0 ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
 }
