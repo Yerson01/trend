@@ -92,6 +92,25 @@ class Product {
         return $products;
     }
 
+    public function getByCategory() {
+        $categoryId = $this->getCategoryId();
+        $query = "SELECT * FROM products WHERE _category_id IN (SELECT _id FROM categories WHERE _id = $categoryId)";
+        $products = $this->conn->query($query);
+        return $products;
+    }
+
+    public function getAllByOffer() {
+        $query = "SELECT * FROM products where _offer != 'null'";
+        $results = $this->conn->query($query);
+        return $results;
+    }
+
+    public function getOneByOffer() {
+        $query = "SELECT * FROM products where _offer != 'null' ORDER BY rand() LIMIT 1";
+        $result = $this->conn->query($query);
+        return $result;
+    }
+
     public function getOne() {
         $id = $this->getId();
         $product = $this->conn->query("SELECT * FROM products WHERE _id = $id");
@@ -110,7 +129,7 @@ class Product {
 
         //prepare statement
         $stmt = $this->conn->prepare("INSERT INTO products (_category_id, _name, _price, _stock, _description, _offer, _date, _image) VALUES (?,?,?,?,?,?,?,?)");
-        $stmt->bind_param('isiissss', $categoryId, $name, $price, $stock, $description, $offer, $date, $image);
+        $stmt->bind_param('isdissss', $categoryId, $name, $price, $stock, $description, $offer, $date, $image);
         $stmt->execute();
 
         if ($stmt->affected_rows !== 0 ) {
@@ -145,7 +164,7 @@ class Product {
 
         //prepare statement
         $stmt = $this->conn->prepare("UPDATE products SET _category_id = ?, _name = ?, _price = ?, _stock = ?, _description = ?, _offer = ?, _date = ?, _image = ? WHERE _id = ?");
-        $stmt->bind_param('isiissssi', $categoryId, $name, $price, $stock, $description, $offer, $date, $image, $id);
+        $stmt->bind_param('isdissssi', $categoryId, $name, $price, $stock, $description, $offer, $date, $image, $id);
         $stmt->execute();
 
         if ($stmt->affected_rows !== 0 ) {

@@ -6,6 +6,34 @@ class CategoryController {
 
     }
 
+    public function show() {
+        if (isset($_GET['id']) && $_GET['id'] !== '') {
+            //obtener la categoria
+            $categoryId = $_GET['id'];
+            $category = new Category();
+            $category->setId($categoryId);
+            $selectedCategory = $category->getOne();
+
+            //obtener los productos
+            $product = new Product();
+            $product->setCategoryId($categoryId);
+            $productsByCategory = $product->getByCategory();
+
+            require_once './views/category/show.php';
+        } else {
+            Utils::redirectTo('product/index');
+        }
+    }
+
+    public function offer() {
+
+        //obtener los productos
+        $product = new Product();
+        $productsByOffer = $product->getAllByOffer();
+
+        require_once './views/category/offer.php';
+    }
+
     public function create() {
         if (isset($_POST['submit'])) {
             $categoryName = !empty($_POST['name']) ? Utils::sanitizeField($_POST['name']) : false;

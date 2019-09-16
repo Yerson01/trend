@@ -11,12 +11,23 @@
     margin: auto;
 }
 
+.mid-container {
+    max-width: 70rem;
+    width: 90%;
+    margin: auto;
+}
+
 .min-container {
     max-width: 60rem;
     width: 90%;
     margin: auto;
 }
 
+@media (min-width: 768px) {
+    .container, .min-container, .max-container, .mid-container {
+        width: 95%;
+    }
+}
 
 
 @media (min-width: 768px) {
@@ -37,11 +48,7 @@
     align-items: start;
 }
 
-@media (min-width: 768px) {
-    .container, .min-container, .max-container {
-        width: 95%;
-    }
-}
+
 
 .btn {
     display: inline-block;
@@ -57,12 +64,16 @@
 @media (min-width: 768px) {
     .btn {
         padding: .9rem 2rem;
-        font-size: 1em;;
+        font-size: 1em;
     }
 }
 
 .btn i {
     padding-left: .3rem;
+}
+
+.padding {
+    padding: 1rem .5rem!important;
 }
 
 .bg-primary {
@@ -78,7 +89,7 @@
 }
 
 .bg-green {
-    background: var(--green);
+    background: var(--green)!important;
 }
 
 .bg-transparent {
@@ -86,7 +97,7 @@
 }
 
 .red {
-    color: var(--primary);
+    color: var(--primary)!important;
 }
 
 .white {
@@ -106,7 +117,7 @@
 }
 
 .border-primary {
-    border: 2px solid var(--primary);;
+    border: 2px solid var(--primary);
 }
 
 .border-secondary {
@@ -124,12 +135,13 @@
 .alert {
     padding: 1rem;
     font-size: .9em;
+    transition: .2s;
 }
 
 .alert.float {
-    position: absolute;
-    top: 2%;
-    right: 1%;
+    position: fixed;
+    top: 1%;
+    left: 1%;
 }
 
 .alert.error {
@@ -144,6 +156,56 @@
     color: #0c4e1e;
 }
 
+.alert.warning {
+    background: #e6f323;
+    border-radius: 2px;
+    color: #4c4e10;
+}
+
+.alert.info {
+    background: #00a0f3;
+    border-radius: 2px;
+    color: #113d4e;
+}
+
 .drop-animation {
     animation: drop 1s;
+}
+
+.empty {
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.empty p {
+    color: #486B6D;
+    font-size: 1.5em;
+}
+
+.line-thought {
+    text-decoration: line-through;
+    opacity: .6;
+}
+
+.margin-right {
+    margin-right: 1rem;
+}
+
+.hidden {
+    opacity: 0;
+}
+
+.visible {
+    opacity: 1;
+}
+
+.margin-0 {
+    margin: 0;
+}
+
+.rotate-90 {
+    transform: rotate(90deg);
+    transition: .2s;
 }

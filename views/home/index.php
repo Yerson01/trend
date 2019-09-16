@@ -1,4 +1,4 @@
-<header class="home">
+<header class="home" id="home">
     <?php require_once './views/layout/navbar.php' ?>
     <div class="landing container">
         <div class="introduction">
@@ -9,7 +9,7 @@
             <div class="cta">
                 <a href="#main" class="start btn border-primary bg-primary white border-radius">Get Started</a>
                 <?php if (isset($_SESSION['admin']) || isset($_SESSION['user'])): ?>
-                    <a href="<?=BASE_URL?>/user/login" class="to-login btn border-secondary border-radius white">
+                    <a href="<?=BASE_URL?>/category/offer" class="to-login btn border-secondary border-radius white">
                         Offers <i class="fas fa-arrow-right"></i>
                     </a>
                 <?php else: ?>
@@ -29,49 +29,37 @@
         <img src="<?=BASE_URL?>src/img/svg/vector1.svg" alt="" class="vector vector1">
         <img src="<?=BASE_URL?>src/img/svg/vector2.svg" alt="" class="vector vector2">
         <img src="<?=BASE_URL?>src/img/svg/vector3.svg" alt="" class="vector vector3">
-        <a href="#main" class="down-arrow"><i class="fas fa-arrow-down"></i></a>
+        <a href="#main" class="down-arrow">
+            <img src="<?=BASE_URL?>src/img/svg/arrow.svg" alt="Arrow">
+        </a>
     </div>
 </header>
 
 <main id="main">
     <div class="main-container min-container">
         <h2>Latest Products</h2>
-        <!--            <a href="" class="arrow-right border-radius position-fixed right">-->
-        <!--                Ver todos-->
-        <!--                <img src="./img/svg/right-arrow.svg" alt="">-->
-        <!--            </a>-->
         <div class="products">
             <?php
-                $products = Utils::showLimitProducts(6);
+                $products = Utils::showLimitProducts(9);
                 while($product = $products->fetch_assoc()):
             ?>
-                <div class="product">
-                    <div class="product-container">
-                        <h3><?=$product['_name']?></h3>
-                        <img src="<?=BASE_URL?>src/img/products/<?=$product['_image']?>" alt="Product" class="product-img">
-                        <div class="product-footer">
-                            <p class="price">$ <?=$product['_price']?></p>
-                            <a href="#" class="add-cart">
-                                <img src="<?=BASE_URL?>src/img/svg/cart-white.svg" alt="cart">
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                    <?php include './views/layout/product.php'?>
             <?php endwhile; ?>
         </div><!--products-->
     </div><!--main-container-->
 </main>
 
-<section class="banner">
-    <div class="banner-container container">
-        <h2>Very confortable everywhere</h2>
-        <p>Buy your clothes from the comfort of your home</p>
-        <a href="#">Add To Cart</a>
-    </div>
-</section>
+<?php require_once './views/layout/banner.php' ?>
+<?php require_once './views/layout/choose_us.php' ?>
+<?php require_once './views/layout/discount.php' ?>
+<?php require_once './views/layout/footer.php'; ?>
 
-<section class="promo">
-    <div class="promo-container">
-            
-    </div>
-</section>
+
+
+
+
+
+
+
+
+

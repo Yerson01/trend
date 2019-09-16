@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 require_once './config/database.php';
@@ -8,7 +9,7 @@ require_once './views/layout/header.php';
 
 $controllerName = isset($_GET['controller']) ? $_GET['controller'] . 'Controller' : DEFAULT_CONTROLLER;
 $action = isset($_GET['action']) ? $_GET['action'] : DEFAULT_ACTION;
-
+ 
 //Si el controlador existe crea una instancia
 if (class_exists($controllerName)) {
     $controller = new $controllerName();
@@ -30,7 +31,6 @@ if (class_exists($controllerName)) {
     $controller->index();
 }
 
-require_once './views/layout/footer.php';
 
 
 

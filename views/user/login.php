@@ -21,11 +21,11 @@
                     <h4><i class="far fa-user"></i> Sign In</h4>
                     <div class="field email">
                         <i class="far fa-envelope"></i>
-                        <input type="email" name="email" id="" placeholder="Email">
+                        <input type="email" name="email" placeholder="Email">
                     </div>
                     <div class="field password">
                         <i class="fas fa-unlock-alt"></i>
-                        <input type="password" name="password" id="" placeholder="Password">
+                        <input type="password" name="password" placeholder="Password">
                     </div>
                     <div class="btn-submit">
                         <button type="submit" class="bg-transparent border-radius">

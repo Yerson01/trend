@@ -1,5 +1,14 @@
+<?php
+if (isset($_GET['id']) && !empty($_GET['id'])) {
+    if (Utils::showProduct($_GET['id']) == null) {
+        $_SESSION['error'] = 'Product no found';
+        Utils::redirectTo('user/manage');
+    }
+} ?>
+
+
 <header class="manage drop-animation">
-    <?php require_once './views/layout/navbar.php' ?>
+    <?php require_once './views/layout/navbar.php' ?>  
 </header>
 
 <div class="manage-container container">
@@ -11,7 +20,7 @@
             <li><a class="option-link" href="#manage-orders">Orders</a></li>
         </ul>
     </aside>
-    <main class="options-details">
+    <main class="options-details manage">
         <section class="manage-categories" id="manage-categories">
             <h4>Categories</h4>
             <div class="d-flex align-items-start">
@@ -103,7 +112,7 @@
                                 </label>
                                 <input type="file" name="image" id="product-img">
                             </div>
-                            <input type="submit" name="submit" value="<?=(isset($edit)) ? 'Edit' : 'Add'?>" >
+                            <input type="submit" name="submit" value="<?=(isset($edit)) ? 'Edit' : 'Add'?>" class="padding">
                         </div>
                     </form>
                 </div>
@@ -148,7 +157,6 @@
         <section class="manage-orders" id="manage-orders">
             <h4>Manage Orders</h4>
         </section>
-
         <!--Show error message-->
         <?php if (isset($_SESSION['error'])): ?>
             <div class="alert error float">
@@ -163,3 +171,6 @@
         <?php endif; ?>
     </main>
 </div>
+
+<?php require_once './views/layout/footer.php'; ?>
+

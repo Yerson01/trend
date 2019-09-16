@@ -5,6 +5,21 @@ class ProductController {
         require_once './views/product/index.php';
     }
 
+    public function show() {
+        if (isset($_GET['id']) && $_GET['id'] !== '') {
+            $productId = $_GET['id'];
+            $newProduct = new Product();
+            $newProduct->setId($productId);
+            $selectedProduct = $newProduct->getOne();
+
+            require_once './views/product/show.php';
+        } else {
+            Utils::redirectTo('product/index');
+        }
+
+
+    }
+
     public function create() {
         if (isset($_POST['submit'])) {
             $productName = !empty($_POST['name']) ? Utils::sanitizeField($_POST['name']) : false;

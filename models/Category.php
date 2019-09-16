@@ -40,6 +40,12 @@ class Category {
         return $categories;
     }
 
+    public function getOne() {
+        $id = $this->getId();
+        $category = $this->conn->query("SELECT * FROM categories WHERE _id = $id");
+        return $category->fetch_assoc();
+    }
+
     public function insertDB() {
         $name = $this->conn->real_escape_string($this->getName());
         $image = $this->getImage();
