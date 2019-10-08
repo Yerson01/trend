@@ -77,6 +77,7 @@ class User {
         $stmt = $this->conn->prepare('INSERT INTO users (_username, _lastname, _email, _password, _rol, _image) VALUES (?,?,?,?,?,?)');
         $stmt->bind_param('ssssss', $name, $lastname, $email, $password, $rol, $image);
         $stmt->execute();
+
         if ($stmt->affected_rows !== 0) {
             return true;
         } else {
